@@ -1839,7 +1839,7 @@ workflow atac {
         File report = qc_report.report
         File qc_json = qc_report.qc_json
         Boolean qc_json_ref_match = qc_report.qc_json_ref_match
-        File output_bam = qc_report.output_bam
+        Array[File?] output_bams = qc_report.output_bams
     }
 }
 
@@ -2849,7 +2849,7 @@ task qc_report {
 
         File? qc_json_ref
         
-        File nodup_bam
+        Array[File?] nodup_bams
 
         # runtime environment
         RuntimeEnvironment runtime_environment
@@ -2924,7 +2924,7 @@ task qc_report {
         File report = glob('*qc.html')[0]
         File qc_json = glob('*qc.json')[0]
         Boolean qc_json_ref_match = read_string('qc_json_ref_match.txt')=='True'
-        File output_bam = nodup_bam
+        Array[File?] output_bams = nodup_bams
     }
     runtime {
         cpu : 1
