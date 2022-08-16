@@ -1830,7 +1830,7 @@ workflow atac {
         overlap_opt_peak_region_size_plot = reproducibility_overlap.peak_region_size_plot,
         overlap_opt_num_peak_qc = reproducibility_overlap.num_peak_qc,
         
-        nodup_bam = nodup_bam_,
+        nodup_bams = nodup_bam_,
 
         runtime_environment = runtime_environment
     }
