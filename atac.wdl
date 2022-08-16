@@ -1839,7 +1839,7 @@ workflow atac {
         File report = qc_report.report
         File qc_json = qc_report.qc_json
         Boolean qc_json_ref_match = qc_report.qc_json_ref_match
-        File output_bam = qc_report.nodup_bam
+        File output_bam = qc_report.output_bam
     }
 }
 
