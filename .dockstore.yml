@@ -1,0 +1,10 @@
+version: 1.0
+workflows:
+   - name: "ATAC-seq"
+     subclass: WDL
+     primaryDescriptorPath: /atac.wdl
+     filters:  # Only develop or master branches and localAligner/** tags
+         branches:
+             - master
+         tags:
+             - /.*/

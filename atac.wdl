@@ -1829,6 +1829,8 @@ workflow atac {
         overlap_opt_peak_region_size_qc = reproducibility_overlap.peak_region_size_qc,
         overlap_opt_peak_region_size_plot = reproducibility_overlap.peak_region_size_plot,
         overlap_opt_num_peak_qc = reproducibility_overlap.num_peak_qc,
+        
+        nodup_bam = nodup_bam_,
 
         runtime_environment = runtime_environment
     }
@@ -1837,6 +1839,7 @@ workflow atac {
         File report = qc_report.report
         File qc_json = qc_report.qc_json
         Boolean qc_json_ref_match = qc_report.qc_json_ref_match
+        output_bam = qc_report.nodup_bam
     }
 }
 
@@ -2845,6 +2848,8 @@ task qc_report {
         File? overlap_opt_num_peak_qc
 
         File? qc_json_ref
+        
+        File nodup_bam
 
         # runtime environment
         RuntimeEnvironment runtime_environment
@@ -2919,6 +2924,7 @@ task qc_report {
         File report = glob('*qc.html')[0]
         File qc_json = glob('*qc.json')[0]
         Boolean qc_json_ref_match = read_string('qc_json_ref_match.txt')=='True'
+        File output_bam = nodup_bam
     }
     runtime {
         cpu : 1
